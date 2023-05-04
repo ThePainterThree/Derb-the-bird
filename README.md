@@ -27,11 +27,11 @@
 
 Main Functionalities
 
-    Derb moves to left, right, up and down (using keybord arrows).
-    Derb starts with 3 lives.
+    Single player game where the player has 3 lives.
+    Player moves to left, right, up and down (using keybord arrows).
     Avoid obstacles to stay alive.
     Objective is to get to the finish line (x amount of time the game lastes)
-    The game ends when you hit objects 3 times, or you get to the finish line.
+    The game ends if Derb hits objects 3 times, or you get to the finish line.
 
 Backlog Functionalities
 
