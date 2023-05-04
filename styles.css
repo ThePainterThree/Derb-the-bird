@@ -1,0 +1,41 @@
+.game-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30%;
+    height: 100vh;
+  }
+  
+  #title {
+    font-family: 'Risque', cursive;
+    font-size: 6rem;
+    text-align: center;
+    margin: 0;
+    color: #16128a;
+ }
+ 
+  #Derb-img-intro {
+    max-width: 30%;
+    height: auto;
+    margin-top: 20px;
+    padding-top: 8%;
+  }
+
+
+#start-button, #restartButton {
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    font-size: 20px;
+    background-color:#C96346ff;
+    color: #f3dbdb;
+    padding: 20px 40px;
+    border: 0;
+    box-shadow: 20;
+    border-radius: 5px;
+    margin-top: 45%;
+    margin-left: 2%;
+}
+
+
+
