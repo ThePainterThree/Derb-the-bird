@@ -1,41 +1,47 @@
 .game-intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 30%;
-    height: 100vh;
-  }
-  
-  #title {
-    font-family: 'Risque', cursive;
-    font-size: 6rem;
-    text-align: center;
-    margin: 0;
-    color: #16128a;
- }
- 
-  #Derb-img-intro {
-    max-width: 30%;
-    height: auto;
-    margin-top: 20px;
-    padding-top: 8%;
-  }
-
-
-#start-button, #restartButton {
-    font-family: 'Lato', sans-serif;
-    position: absolute;
-    font-size: 20px;
-    background-color:#C96346ff;
-    color: #f3dbdb;
-    padding: 20px 40px;
-    border: 0;
-    box-shadow: 20;
-    border-radius: 5px;
-    margin-top: 45%;
-    margin-left: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
+  height: 100vh;
 }
 
+#title {
+  font-family: 'Risque', cursive;
+  font-size: 6rem;
+  text-align: center;
+  margin: 0;
+  color: #16128a;
+  padding-left: 10%;
+}
 
+#Derb-img-intro {
+  max-width: 50%;
+  height: auto;
+  margin-top: 20px;
+  padding-top: 8%;
+  padding-left: 25%;
+}
 
+#start-button, #restartButton {
+  font-family: 'Lato', sans-serif;
+  position: absolute;
+  font-size: 20px;
+  background-color:#C96346ff;
+  color: #f3dbdb;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 20;
+  border-radius: 5px;
+  margin-top: 40%;
+  margin-left: 39%
+}
+
+.game-instructions{
+font-family: 'Risque', cursive;
+font-size:1rem;
+color: rgb(4, 48, 3);
+text-align:justify;
+padding-top: 15%;
+padding-right: 10%;
+}
