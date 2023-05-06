@@ -1,5 +1,6 @@
 // Average browser window size = 1366 x 784
 // General guideline: canvas size of 800x600 pixels for simple browser games
+
 /* STEPS:
 
   1.Create the Canvas and draw on it (background, derb, obstacles)
@@ -14,10 +15,15 @@
 
  */
 
-/* STEPS: Create the Canvas and draw on it (background, derb, obstacles);
+  //const canvas = document.getElementById('canvas');
+  //const ctx = canvas.getContext('2d');
+  // window.onload: add the first screen with the start game button and instructions, after the window loads totally
+  
+
+/* STEPS:
 
   1. startGame function
-    1.1 Load game screen and player
+    1.1 Load game screen and player function (not nested)
 
   2.Move the player
    2.1 Define the player to the limits of the canvas
@@ -41,18 +47,15 @@
 
  */
 
-  //const canvas = document.getElementById('canvas');
-  //const ctx = canvas.getContext('2d');
-
-  // window.onload: add the first screen with the start game button and instructions, after the window loads totally
-  
-  
+    
   window.onload = () => {
     document.getElementById('start-button').onclick = () => {
       startGame();
     };
 };
    
+
+
     function playerDerb() { //Player function must be define first than startGame function
 
       class Player {
@@ -95,10 +98,43 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
    
-        // create the player
         const player = new Player();
+        background()
+
     }
   
+    function background() {
+
+        const sky = new Image();
+        sky.src = './Images/background.png';       //// insert the backgroud image
+      
+            const backgroundImage = {
+              img: sky,
+              x: 0,
+              speed: -3,
+      
+              move: function() {
+                this.x += this.speed;
+                this.x %= canvas.width;
+              },
+      
+              draw: function() {
+                ctx.drawImage(this.img, this.x, 2000, 500);                            // insert size of the canvas, and adapt for the loop to look clean
+                ctx.drawImage(this.img, this.x - this.img.width, 0, 2000, 500);
+                ctx.drawImage(this.img, this.x - this.img.width*2, 0, 2000, 500);
+              },
+            };
+      
+        function loopBackground() {
+          backgroundImage.move();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          backgroundImage.draw();
+      
+          requestAnimationFrame(loopBackground);
+        }
+      
+        loopBackground();
+      };
   
     
     
