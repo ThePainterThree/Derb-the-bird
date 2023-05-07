@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title class="title">Derb, the Bird</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <title>Derb, the Bird</title>
+    <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Risque&display=swap" rel="stylesheet">
@@ -12,22 +12,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Risque&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="game-intro">
-      <span class="game-instructions">
+
+      <section id="game-instructions">
        <h3>How to play:</h3>
        <p>Use arrows [↑→↓←] keys to move Derb.</p>
-       <p>The objective of the game is to dodge objects</p> in the sky. Keep Derb alive long enough to<p>reach the destination!</p>
-      </span>
-      <div>
-      <h1 id="title">Derb, the bird</h1>
-      <img src="./images/Derb-bird.png" alt="Bird" id="Derb-img-intro" />
-    </div>
-      <br/>
-      <button id="start-button">StartGame</button>
-    </div> 
-    <canvas id="intro-canvas" width="800px" height="600px"></canvas>
-    <canvas id="game-area" width="800px" height="600px"></canvas>
-    <canvas id="game-over-canvas" width="800px" height="600px"></canvas>
-    <script type="text/javascript" src="js/index.js"></script>    
+       <p>The objective of the game is to dodge objects</p><p>in the sky. Keep Derb alive long enough to</p><p>reach the destination!</p>
+      </section>
+
+      <section class="game-intro">
+        <h1 id="title">Derb, the bird</h1>
+        <img src="./images/Derb-bird.png" alt="Bird" id="Derb-img-intro" />
+        <br/>
+        <button id="start-button">Start Game</button>
+      </section>
+  
+
+    <canvas id="game-area" width="1366px" height="784px"></canvas>
+    
+    <script type="text/javascript" src="index.js"></script>    
   </body>
 </html>
