@@ -12,22 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Risque&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="game-intro">
-      <span class="game-instructions">
+    <section id="game-intro">
        <h3>How to play:</h3>
        <p>Use arrows [↑→↓←] keys to move Derb.</p>
        <p>The objective of the game is to dodge objects</p> in the sky. Keep Derb alive long enough to<p>reach the destination!</p>
-      </span>
-      <div>
+    </section>
       <h1 id="title">Derb, the bird</h1>
       <img src="./images/Derb-bird.png" alt="Bird" id="Derb-img-intro" />
-    </div>
       <br/>
       <button id="start-button">StartGame</button>
-    </div> 
-    <canvas id="intro-canvas" width="800px" height="600px"></canvas>
+  </section> 
     <canvas id="game-area" width="800px" height="600px"></canvas>
-    <canvas id="game-over-canvas" width="800px" height="600px"></canvas>
     <script type="text/javascript" src="js/index.js"></script>    
   </body>
 </html>
