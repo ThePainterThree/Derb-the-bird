@@ -94,7 +94,6 @@
       document.getElementById("game-area").style.display="block";
       updateGame();
       
-      
     }
   };
 
@@ -105,8 +104,11 @@
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
     generateObstacles();
-
+    score();
+    //checkGameOver(); -> with no comment the obstacles stop appearing
+    detectCollision(obstacles);
     
+
     requestAnimationFrame(updateGame);
   };
 
@@ -115,7 +117,7 @@
       constructor() {
         this.x = 50;   // define initial position for Derb x
         this.y = 50;   // define initial position for Derb y
-        this.img = derbImg;  
+        this.img = derbImg;
       }
   
           draw() {
@@ -161,9 +163,11 @@
 
         constructor(){
           this.img = derbImg;
-          this.x = canvas.width-100;   // objects always come from the right
-          this.y = Math.random()*canvas.height-200;   // objects can come from any height
-          this.speed = 3;
+          this.x = 700;   // objects always come from the right
+          this.y = Math.random() *700;   // objects can come from any height, 700 is the max height!
+          this.speed = 2;
+          this.width = this.img.width;
+          this.height = this.img.height;
         }
 
         draw(){
@@ -173,6 +177,30 @@
         move(){
           this.x -=this.speed;
         }
+
+
+        left(){
+          return this.x;
+        }
+        right() {
+          return this.x + this.width;
+        }
+        top() {
+          return this.y;
+        }
+        bottom() {
+          return this.y + this.height;
+        }
+
+      /*   crash(obstacles){
+
+          return !(
+            this.bottom() < obstacles[i].top() ||
+            this.top() > obstacles[i].bottom() ||
+            this.right() < obstacles[i].left() ||
+            this.left() > obstacles[i].right()
+          );
+        }    */
 
         update() {
           this.draw();
@@ -188,12 +216,56 @@
         }
 
         frames+=1;
-        if(frames%150 === 0){
-          let maxHeight =
+        if(frames%100 === 0){
           obstacles.push(new Obstacles);
         };
       }
 
+
+      // Game over - collision
+ /* 
+        function checkGameOver(){
+          const crashed = obstacles.some(function(obstacle){
+            return derb.crash(obstacle);
+          });
+          if (crashed){
+            cancelAnimationFrame(updateGame);
+          }
+          if (frames = 600){
+            cancelAnimationFrame(updateGame);
+          }
+        }; */
+
+
+        function detectCollision(obstacles){
+
+          for(i = 0; i < obstacles.length; i++) {
+            if((derb.y > obstacles[i].top()) || 
+            (derb.x + derb.width < obstacles[i].left()) || 
+            (derb.x - derb.width  > obstacles[i].right())){
+            cancelAnimationFrame(updateGame);
+          }
+          }
+        }
+
+ 
+      //Restart button
+
+
+      //Lives
+
+
+      //Score
+
+
+        function score(){
+          let points = Math.floor(frames / 5);
+          ctx.font = "20px Lato"
+          ctx.fillStyle = 'black';
+          ctx.fillText(`Score: ${points}`, 600, 30);
+        }
+        
+      
         
 
       
