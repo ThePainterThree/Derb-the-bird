@@ -49,9 +49,9 @@
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
   const backgroundImg = new Image;
-  backgroundImg.src = "/Derb-the-bird/Images/background.png";
+  backgroundImg.src = "./Images/background.png";
   const derbImg = new Image();
-  derbImg.src = "./images/Derb-bird.png";
+  derbImg.src = "./Images/Derb-bird.png";
  
 
    
