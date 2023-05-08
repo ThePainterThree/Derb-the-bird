@@ -52,6 +52,9 @@
   backgroundImg.src = "/Derb-the-bird/Images/background.png";
   const derbImg = new Image();
   derbImg.src = "./images/Derb-bird.png";
+  let obstacles = [];
+  let frames = 0;
+  
  
 
    
@@ -71,6 +74,11 @@
       ctx.drawImage(this.img, this.x - this.img.width, 0, 3000, 784);                    
       ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
     },
+
+    update(){
+      this.move();
+      this.draw();
+    }
   };
 
 
@@ -83,21 +91,25 @@
       // Set the canvas dimensions to match the viewport or is not necessary?
       document.getElementById("game-instructions").style.display = "none";
       document.getElementsByClassName("game-intro")[0].style.display = "none";
-      loopBackground();
-
+      document.getElementById("game-area").style.display="block";
+      updateGame();
+      
+      
     }
   };
 
-  
 
 
-  function loopBackground() {
+  function updateGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    backgroundImage.move();
-    backgroundImage.draw();
-    derb.draw();
-
-    requestAnimationFrame(loopBackground);
+    backgroundImage.update(); //includes move and draw method for the background
+    derb.update(); // includes move and draw method for Derb
+    /* frames +=1;
+    if(frames % 2 === 0){obstacles.push(new Obstacles)};
+    obstacle1.update(); */                                //NOT WORKING
+    //obstacle1.update();
+    
+    requestAnimationFrame(updateGame);
   };
 
 
@@ -106,45 +118,73 @@
         this.x = 50;   // define initial position for Derb x
         this.y = 50;   // define initial position for Derb y
         this.img = derbImg;  
-        this.draw();
-      }
-    
-      moveLeft(){
-        this.x -=30;
-      }
-      moveRight(){
-        this.x +=30;
-      }
-      moveUp(){
-        this.y -=30;
-      }
-      moveDown(){
-        this.y +=30;
       }
   
-      draw() {
-        ctx.drawImage(this.img, this.x, this.y, 150, 150); //Define the size of derb
+          draw() {
+            ctx.drawImage(this.img, this.x, this.y, 150, 150); //Define the size of derb
+          }
+
+          move(){
+            document.onkeydown = event => {
+              const key = event.keyCode;
+              switch (key) {
+                case 38: // up
+                  if(this.y >=0) this.y -=30;
+                  break;
+                case 40: // down
+                  this.y +=30;
+                  if (this.y >= canvas.height) {this.y = canvas.height}; 
+                  //canvas.height/width doesn't work here. Has to be the px limit of the canvas (to be defined on html)
+                  break;
+                case 37: // left
+                  if (this.x >=0) this.x -=30;
+                  break;
+                case 39: // right
+                  if (this.x < canvas.width) this.x +=30;
+                  //canvas.height/width doesn't work here. Has to be the px limit of the canvas (to be defined on html)
+                  else this.x=0;
+                  break;
+              }
+            }
+          }
+
+          update(){
+            this.draw();
+            this.move();
+          }
       }
-    };
 
     let derb= new Player();
 
-    document.addEventListener("keydown", function(e){
-        switch (e.keyCode) {
-          case 38:
-            // add here the limits
-            derb.moveUp();
-          break;
-        case 40: // down arrow
-          derb.moveDown();
-          break;
-        case 37: // left arrow
-          derb.moveLeft();
-          break;
-        case 39: // right arrow
-          derb.moveRight();
-          break;
+
+
+
+      class Obstacles {
+
+        constructor(){
+          this.img = derbImg;
+          this.x = canvas.width-100;   // objects always come from the right
+          this.y = Math.random()*canvas.height-200;   // objects can come from any height
+          this.speed = 1;
+        }
+
+        draw(){
+          ctx.drawImage(this.img, this.x, this.y, 150, 150);
+        }
+
+        move(){
+          this.x -=this.speed;
+        }
+
+        update() {
+          this.draw();
+          this.move();
+        }
       }
-    });
-    
-    
+
+      
+
+
+        
+
+      

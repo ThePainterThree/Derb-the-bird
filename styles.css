@@ -9,7 +9,7 @@
 
 #title {
   font-family: 'Risque', cursive;
-  font-size: 6rem;
+  font-size: 3rem;
   text-align: center;
   margin: 0;
   color: #16128a;
@@ -20,6 +20,7 @@
   margin-top: 20px;
   padding-top: 8%;
   padding-left: 25%;
+  width: 50%
 }
 
 #start-button{
@@ -31,7 +32,7 @@
   box-shadow: 20;
   border-radius: 7px;
   margin-top: 20%;
-  margin-left: 50%;
+  margin-left: 30%;
   size: 30px;
 }
 
@@ -83,4 +84,5 @@ h3 {
 #game-area{
   border: solid 3px;
   border-color: red;
+  display:none;
 }
