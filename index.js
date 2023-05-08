@@ -104,10 +104,8 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
-    /* frames +=1;
-    if(frames % 2 === 0){obstacles.push(new Obstacles)};
-    obstacle1.update(); */                                //NOT WORKING
-    //obstacle1.update();
+    generateObstacles();
+
     
     requestAnimationFrame(updateGame);
   };
@@ -165,7 +163,7 @@
           this.img = derbImg;
           this.x = canvas.width-100;   // objects always come from the right
           this.y = Math.random()*canvas.height-200;   // objects can come from any height
-          this.speed = 1;
+          this.speed = 3;
         }
 
         draw(){
@@ -181,9 +179,20 @@
           this.move();
         }
       }
-
       
+      function generateObstacles(){
 
+        for(i = 0; i < obstacles.length; i++) {
+          obstacles[i].x += -1;
+          obstacles[i].update();
+        }
+
+        frames+=1;
+        if(frames%150 === 0){
+          let maxHeight =
+          obstacles.push(new Obstacles);
+        };
+      }
 
         
 
