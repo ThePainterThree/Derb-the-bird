@@ -25,7 +25,7 @@
   1. startGame function
     1.1 Load game screen and player function (not nested)
 
-  2.Move the player
+  2.Move the playergit pull
    2.1 Define the player to the limits of the canvas
    2.2 Keyboard controls
 
@@ -47,94 +47,152 @@
 
  */
 
-    
+  const canvas = document.getElementById("game-area");
+  const ctx = canvas.getContext("2d");
+  const backgroundImg = new Image;
+  backgroundImg.src = "/Derb-the-bird/Images/background.png";
+  const derbImg = new Image();
+  derbImg.src = "./images/Derb-bird.png";
+  let obstacles = [];
+
+   
+  const backgroundImage = {
+
+    img: backgroundImg,
+    x: 0,
+    speed: -3,
+
+    move: function() {
+      this.x += this.speed;
+      this.x %= canvas.width;
+    },
+
+    draw: function() {
+      ctx.drawImage(this.img, this.x, 0, 3000, 784);    
+      ctx.drawImage(this.img, this.x - this.img.width, 0, 3000, 784);                    
+      //ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
+    },
+  };
+
+
   window.onload = () => {
     document.getElementById('start-button').onclick = () => {
       startGame();
     };
-};
-   
+
+    function startGame() {
+      // Set the canvas dimensions to match the viewport or is not necessary?
+      document.getElementById("game-instructions").style.display = "none";
+      document.getElementsByClassName("game-intro")[0].style.display = "none";
+      loopBackground();
+      //updateCanvas(); 
+    }
+  };
+
+  
 
 
-    function playerDerb() { //Player function must be define first than startGame function
+  function loopBackground() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    backgroundImage.move();
+    backgroundImage.draw();
+    derb.draw();
+
+    requestAnimationFrame(loopBackground);
+  };
+
 
       class Player {
       constructor() {
         this.x = 50;   // define initial position for Derb x
         this.y = 50;   // define initial position for Derb y
-        const derb = new Image();
-        derb.addEventListener('load', () => {
-          this.img = derb;  
-          this.draw();
-        });
-        derb.src = "./images/Derb-bird.png"  // adds Derb image
+        this.img = derbImg;  
+        this.draw();
       }
     
       moveLeft(){
-        this.x -=20;
+        this.x -=30;
       }
       moveRight(){
-        this.x +=20;
+        this.x +=30;
       }
       moveUp(){
-        this.y -=20;
+        this.y -=30;
       }
       moveDown(){
-        this.y +=20;
+        this.y +=30;
       }
   
       draw() {
-        ctx.drawImage(this.img, this.x, this.y, 50, 100); //Define the size of derb
+        ctx.drawImage(this.img, this.x, this.y, 150, 150); //Define the size of derb
       }
-    }
-    return new Player();
-  }
+    };
 
+    let derb= new Player();
 
-    function startGame() {
-        const canvas = document.getElementById("game-area");
-        const ctx = canvas.getContext("2d");
-        // Set the canvas dimensions to match the viewport or is not necessary?
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-   
-        const player = new Player();
-        background()
-
-    }
+    document.addEventListener("keydown", function(e){
+        switch (e.keyCode) {
+          case 38:
+            // add here the limits
+            derb.moveUp();
+          break;
+        case 40: // down arrow
+          derb.moveDown();
+          break;
+        case 37: // left arrow
+          derb.moveLeft();
+          break;
+        case 39: // right arrow
+          derb.moveRight();
+          break;
+      }
+    });
   
-    function background() {
-
-        const sky = new Image();
-        sky.src = './Images/background.png';       //// insert the backgroud image
-      
-            const backgroundImage = {
-              img: sky,
-              x: 0,
-              speed: -3,
-      
-              move: function() {
-                this.x += this.speed;
-                this.x %= canvas.width;
-              },
-      
-              draw: function() {
-                ctx.drawImage(this.img, this.x, 2000, 500);                            // insert size of the canvas, and adapt for the loop to look clean
-                ctx.drawImage(this.img, this.x - this.img.width, 0, 2000, 500);
-                ctx.drawImage(this.img, this.x - this.img.width*2, 0, 2000, 500);
-              },
-            };
-      
-        function loopBackground() {
-          backgroundImage.move();
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          backgroundImage.draw();
-      
-          requestAnimationFrame(loopBackground);
+    
+      class Objects {
+        constructor(){
+          this.img = derbImg;
+          this.speed = 3;
+          this.width = this.img.width;
+          this.height=this.img.height;
+          this.x = 400;
+          this.y = Math.random()*canvas.height;
+          this.angle = this.angle();
+          this.dx=1*this.speed;
+          this.yx = 1 * this.speed;   
+          this.radius = 20; 
         }
-      
-        loopBackground();
+        draw(){
+          ctx.save();
+          ctx.translate(this.x,this.y);
+          ctx.rotate(this.angle * Math.PI/360);
+          ctx.drawImage(this.img, 0, 0, this.img.width,this.img.height);
+          ctx.restore();
+        }
+        angle(){
+          if(this.y <= 150) return -60;
+          else if (this.y >= 151 && this.y <= 300) return 0;
+          else return 60;
+        }
+        move(){
+          if(this.angle === -60){
+              this.x -= this.dx;
+              this.y += this.dx;
+          }
+          else if(this.angle === 60){
+              this.x -= this.dx;
+              this.y -= this.dx;
+          }
+          else this.x -= this.dx;
+        }
+        update(){
+          this.move();
+          this.draw();
+        }
       };
-  
-    
-    
+
+      
+
+
+
+    console.log(obstacles);

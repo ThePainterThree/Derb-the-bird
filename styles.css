@@ -1,9 +1,10 @@
 .game-intro {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: left;
-  height: 100vh;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
 }
 
 #title {
@@ -12,18 +13,29 @@
   text-align: center;
   margin: 0;
   color: #16128a;
-  padding-left: 10%;
+  padding-left: 25%;
 }
 
 #Derb-img-intro {
-  max-width: 50%;
-  height: auto;
   margin-top: 20px;
   padding-top: 8%;
   padding-left: 25%;
 }
 
-#start-button, #restartButton {
+#start-button{
+  font-family: 'Lato', sans-serif;
+  color: #f3dbdb;
+  position: end;
+  background-color:#C96346ff;
+  font-size: 35px;
+  box-shadow: 20;
+  border-radius: 7px;
+  margin-top: 20%;
+  margin-left: 50%;
+  size: 30px;
+}
+
+#restartButton {
   font-family: 'Lato', sans-serif;
   position: absolute;
   font-size: 20px;
@@ -37,11 +49,38 @@
   margin-left: 39%
 }
 
-.game-instructions{
-font-family: 'Risque', cursive;
-font-size:1rem;
-color: rgb(4, 48, 3);
-text-align:justify;
-padding-top: 15%;
-padding-right: 10%;
+#game-instructions{
+    width: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+    display:block;
+}
+
+body {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+p {
+  color: black;
+  font-size: 1.5em;
+}
+
+section {
+  border: solid 3px;
+  border-color: black;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+#game-area{
+  border: solid 3px;
+  border-color: red;
 }
