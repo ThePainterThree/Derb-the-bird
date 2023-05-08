@@ -52,6 +52,9 @@
   backgroundImg.src = "/Derb-the-bird/Images/background.png";
   const derbImg = new Image();
   derbImg.src = "./images/Derb-bird.png";
+  let obstacles = [];
+  let frames = 0;
+  
  
 
    
@@ -88,8 +91,9 @@
       // Set the canvas dimensions to match the viewport or is not necessary?
       document.getElementById("game-instructions").style.display = "none";
       document.getElementsByClassName("game-intro")[0].style.display = "none";
-      document.getElementById("game-area").style.display="flex";
+      document.getElementById("game-area").style.display="block";
       updateGame();
+      
       
     }
   };
@@ -100,7 +104,11 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
-
+    /* frames +=1;
+    if(frames % 2 === 0){obstacles.push(new Obstacles)};
+    obstacle1.update(); */                                //NOT WORKING
+    //obstacle1.update();
+    
     requestAnimationFrame(updateGame);
   };
 
@@ -147,3 +155,36 @@
       }
 
     let derb= new Player();
+
+
+
+
+      class Obstacles {
+
+        constructor(){
+          this.img = derbImg;
+          this.x = canvas.width-100;   // objects always come from the right
+          this.y = Math.random()*canvas.height-200;   // objects can come from any height
+          this.speed = 1;
+        }
+
+        draw(){
+          ctx.drawImage(this.img, this.x, this.y, 150, 150);
+        }
+
+        move(){
+          this.x -=this.speed;
+        }
+
+        update() {
+          this.draw();
+          this.move();
+        }
+      }
+
+      
+
+
+        
+
+      
