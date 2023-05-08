@@ -46,14 +46,13 @@
   7.Finishing up (sounds? original drawings?)
 
  */
-
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
   const backgroundImg = new Image;
   backgroundImg.src = "/Derb-the-bird/Images/background.png";
   const derbImg = new Image();
   derbImg.src = "./images/Derb-bird.png";
-  let obstacles = [];
+ 
 
    
   const backgroundImage = {
@@ -70,7 +69,7 @@
     draw: function() {
       ctx.drawImage(this.img, this.x, 0, 3000, 784);    
       ctx.drawImage(this.img, this.x - this.img.width, 0, 3000, 784);                    
-      //ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
+      ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
     },
   };
 
@@ -85,7 +84,7 @@
       document.getElementById("game-instructions").style.display = "none";
       document.getElementsByClassName("game-intro")[0].style.display = "none";
       loopBackground();
-      //updateCanvas(); 
+
     }
   };
 
@@ -147,52 +146,3 @@
           break;
       }
     });
-  
-    
-      class Objects {
-        constructor(){
-          this.img = derbImg;
-          this.speed = 3;
-          this.width = this.img.width;
-          this.height=this.img.height;
-          this.x = 400;
-          this.y = Math.random()*canvas.height;
-          this.angle = this.angle();
-          this.dx=1*this.speed;
-          this.yx = 1 * this.speed;   
-          this.radius = 20; 
-        }
-        draw(){
-          ctx.save();
-          ctx.translate(this.x,this.y);
-          ctx.rotate(this.angle * Math.PI/360);
-          ctx.drawImage(this.img, 0, 0, this.img.width,this.img.height);
-          ctx.restore();
-        }
-        angle(){
-          if(this.y <= 150) return -60;
-          else if (this.y >= 151 && this.y <= 300) return 0;
-          else return 60;
-        }
-        move(){
-          if(this.angle === -60){
-              this.x -= this.dx;
-              this.y += this.dx;
-          }
-          else if(this.angle === 60){
-              this.x -= this.dx;
-              this.y -= this.dx;
-          }
-          else this.x -= this.dx;
-        }
-        update(){
-          this.move();
-          this.draw();
-        }
-      };
-
-      
-
-
-
-    console.log(obstacles);
