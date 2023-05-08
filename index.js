@@ -196,4 +196,4 @@
 
 
     console.log(obstacles);
-    function Test (){}
+    //function Test (){}
