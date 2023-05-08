@@ -102,6 +102,15 @@
 
   
 
+  function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    backgroundImage.update(); //includes move and draw method for the background
+    derb.update(); // includes move and draw method for Derb
+    generateObstacles();
+
+    
+    requestAnimationFrame(updateGame);
+  };
 
 
       class Player {
@@ -153,11 +162,10 @@
     class Obstacles {
 
         constructor(){
-          this.img = obstaclesImage;
-          this.x = canvas.width - 100;  // objects always come from the right
-          this.y = Math.random() * (canvas.height - 200) + 100; // objects can come from any height
-          this.speed = 1;
-  
+          this.img = derbImg;
+          this.x = canvas.width-100;   // objects always come from the right
+          this.y = Math.random()*canvas.height-200;   // objects can come from any height
+          this.speed = 3;
         }
 
         draw(){
@@ -211,36 +219,19 @@
         requestAnimationFrame(updateGame);
       }
       
-        // Check for collisions between derb and obstacles
-        obstacles.forEach((obstacle) => {
-          if (derb.isCollidingWith(obstacle)) {
-          endGame();
-           }
-          });
+      function generateObstacles(){
 
-        // Call updateGame again after a set amount of time (in milliseconds)
-        setTimeout(() => {
-        window.requestAnimationFrame(updateGame);
-        }, 1000 / 60);
-        
+        for(i = 0; i < obstacles.length; i++) {
+          obstacles[i].x += -1;
+          obstacles[i].update();
+        }
 
-
-
-
-
-
-
-        //obstaclesFrequency++;
-    
-         /* if (obstaclesFrequency % 100 === 1) {
-    
-            let randomObstacleX = Math.floor(Math.random * (derbImg))
-            let newObstacle = new Obstacle
-            obstacles.push(newObstacle);*/
-          
-
-      
-
+        frames+=1;
+        if(frames%150 === 0){
+          let maxHeight =
+          obstacles.push(new Obstacles);
+        };
+      }
 
         
 
