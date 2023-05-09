@@ -49,6 +49,7 @@
   let frames = 0;
   let derbLives= 3;
   let invincible = false;
+  let obstaclesImages = ["./Images/panties.png", "./Images/flipFlop.png", "./Images/Tuna.png"]
   
    
   const backgroundImage = {
@@ -90,10 +91,10 @@
     }
   };
 
-
+let requestId
 
   function updateGame() {
-    
+    // add reset function here
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
@@ -103,7 +104,11 @@
     playerLives();
     checkGameOver();
 
-    requestAnimationFrame(updateGame);
+    requestId = requestAnimationFrame(updateGame);
+
+    if (checkGameOver()){
+      cancelAnimationFrame(requestId);
+    }
   };
 
 
@@ -185,13 +190,20 @@
         for(i = 0; i < obstacles.length; i++) {
           obstacles[i].x += -1;
           obstacles[i].update();
-          
-          if (collisionDetection(derb, obstacles[i]) === true) {
-            derbLives -= 1;                                 
-           
-        return;
-          }
         }
+
+          let collision = obstacles.some(function(obstacle, index) {
+            
+            return collisionDetection(derb, obstacle) && obstacles.splice(index, 1);
+            
+          }); 
+
+          if (collision) {
+          derbLives -= 1;                              
+         
+          return;
+        }
+      
 
         frames+=1;
         if(frames%100 === 0){
@@ -208,6 +220,7 @@
           derb.x + derb.width > obstacle.x &&
           derb.y + derb.height > obstacle.y &&
           derb.y < obstacle.y + obstacle.height) {
+          console.log("collision detected") 
           return true;
           }
 
@@ -223,8 +236,7 @@
         if(derbLives === 0) {
           document.getElementById("game-area").style.display = "none";
           document.getElementById("game-over").style.display = "block";
-          cancelAnimationFrame(updateGame);
-          return
+          return true;
         }
       }
 
@@ -241,12 +253,17 @@
           }
 
 
-      //Score
+      //Score and // Win GAME !
         function score(){
           let points = Math.floor(frames / 60);
           ctx.font = "20px Lato"
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 600, 30);
+
+          if (points>20){
+            document.getElementById("game-area").style.display = "none";
+            document.getElementById("winner").style.display = "block";
+          }
         }
 
 
@@ -257,11 +274,10 @@
         };
 
         function restartGame(){
-          cancelAnimationFrame(updateGame);
           document.getElementById("game-over").style.display = "none";
           document.getElementById("game-area").style.display = "block";
-          requestAnimationFrame(updateGame);
+          startGame();
         }
-        // Salvar Score para display no gameOver!
 
-        //Definir quando termina o jogo --- score = x ????
+
+        // Salvar Score para display no gameOver!    ---- > talvez só faça sentido se o jogo tivesse níveis
