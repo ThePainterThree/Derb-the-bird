@@ -100,13 +100,13 @@
 
 
   function updateGame() {
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
     generateObstacles();
     score();
-    //checkGameOver(); -> with no comment the obstacles stop appearing
-    detectCollision(obstacles);
+    
     
 
     requestAnimationFrame(updateGame);
@@ -118,10 +118,12 @@
         this.x = 50;   // define initial position for Derb x
         this.y = 50;   // define initial position for Derb y
         this.img = derbImg;
+        this.width = 150     // 150 size of derb
+        this.height = 150    // 150 size of derb
       }
   
           draw() {
-            ctx.drawImage(this.img, this.x, this.y, 150, 150); //Define the size of derb
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height); //Define the size of derb
           }
 
           move(){
@@ -164,49 +166,26 @@
         constructor(){
           this.img = derbImg;
           this.x = 700;   // objects always come from the right
-          this.y = Math.random() *700;   // objects can come from any height, 700 is the max height!
+          this.y = Math.random() * (700 - 50) + 50;   // objects can come from any height, 700 is the max height! 70 is min
           this.speed = 2;
-          this.width = this.img.width;
-          this.height = this.img.height;
+          this.width = 150; // size of obstacle
+          this.height = 150; //size of obstacles
         }
 
         draw(){
-          ctx.drawImage(this.img, this.x, this.y, 150, 150);
+          ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
 
         move(){
           this.x -=this.speed;
         }
 
-
-        left(){
-          return this.x;
-        }
-        right() {
-          return this.x + this.width;
-        }
-        top() {
-          return this.y;
-        }
-        bottom() {
-          return this.y + this.height;
-        }
-
-      /*   crash(obstacles){
-
-          return !(
-            this.bottom() < obstacles[i].top() ||
-            this.top() > obstacles[i].bottom() ||
-            this.right() < obstacles[i].left() ||
-            this.left() > obstacles[i].right()
-          );
-        }    */
-
         update() {
           this.draw();
           this.move();
         }
       }
+      
       
       function generateObstacles(){
 
@@ -218,37 +197,20 @@
         frames+=1;
         if(frames%100 === 0){
           obstacles.push(new Obstacles);
-        };
+        };    
+ 
       }
 
 
+
+
+
       // Game over - collision
- /* 
-        function checkGameOver(){
-          const crashed = obstacles.some(function(obstacle){
-            return derb.crash(obstacle);
-          });
-          if (crashed){
-            cancelAnimationFrame(updateGame);
-          }
-          if (frames = 600){
-            cancelAnimationFrame(updateGame);
-          }
-        }; */
 
 
-        function detectCollision(obstacles){
+      // Detect Collision
+         
 
-          for(i = 0; i < obstacles.length; i++) {
-            if((derb.y > obstacles[i].top()) || 
-            (derb.x + derb.width < obstacles[i].left()) || 
-            (derb.x - derb.width  > obstacles[i].right())){
-            cancelAnimationFrame(updateGame);
-          }
-          }
-        }
-
- 
       //Restart button
 
 
@@ -259,13 +221,9 @@
 
 
         function score(){
-          let points = Math.floor(frames / 5);
+          let points = Math.floor(frames / 60);
           ctx.font = "20px Lato"
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 600, 30);
         }
         
-      
-        
-
-      
