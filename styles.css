@@ -5,22 +5,22 @@
 	justify-content: center;
 	align-items: center;
 	align-content: stretch;
+  align-content:center;
 }
 
 #title {
   font-family: 'Risque', cursive;
   font-size: 3rem;
   text-align: center;
-  margin: 0;
+  margin-top: 50px;
   color: #16128a;
-  padding-left: 25%;
 }
 
 #Derb-img-intro {
   margin-top: 20px;
   padding-top: 8%;
-  padding-left: 25%;
-  width: 50%
+  width: 80%;
+  /* cropping the image of derb will automattically make the intro html better */
 }
 
 #start-button{
@@ -28,17 +28,17 @@
   color: #f3dbdb;
   position: end;
   background-color:#C96346ff;
+  padding: 20px 40px;
   font-size: 35px;
   box-shadow: 20;
   border-radius: 7px;
-  margin-top: 20%;
-  margin-left: 30%;
+  margin-top: 10%;
   size: 30px;
 }
 
 #restartButton {
   font-family: 'Lato', sans-serif;
-  position: absolute;
+  position: center;
   font-size: 20px;
   background-color:#C96346ff;
   color: #f3dbdb;
@@ -46,8 +46,8 @@
   border: 0;
   box-shadow: 20;
   border-radius: 5px;
-  margin-top: 40%;
-  margin-left: 39%
+  margin-left: 50%;
+  display: block;
 }
 
 #game-instructions{
@@ -72,10 +72,10 @@ p {
   font-size: 1.5em;
 }
 
-section {
+/* section {
   border: solid 3px;
   border-color: black;
-}
+} */
 
 h3 {
   font-size: 2em;
@@ -85,4 +85,43 @@ h3 {
   border: solid 3px;
   border-color: red;
   display:none;
+}
+
+#game-over{
+  text-align: center;
+  width: 400px;
+  padding-left: none;
+  border: none;
+  border-color: none;
+  display: none; /* mudar depois para "block"", foi só para criar as outras páginas html */
+}
+
+#title-over{
+  font-family: 'Risque', cursive;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+  color: #16128a;
+  padding-left: 40%;
+  padding-top: 40%
+}
+
+#derb-loser{
+  width: 600px;
+  padding-left: 0;
+}
+
+#winner{
+  text-align: center;
+  display: none; /* mudar depois para "block"", foi só para criar as outras páginas html */
+}
+
+#win{
+  font-family: 'Risque', cursive;
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+  color: black;
+  padding-bottom: 40px;
+  padding-top: 40px;
 }

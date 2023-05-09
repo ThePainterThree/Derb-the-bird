@@ -40,7 +40,7 @@
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
   const backgroundImg = new Image;
-  backgroundImg.src = "/images/background.png";
+  backgroundImg.src = "/Derb-the-bird/Images/background.png";
   const derbImg = new Image();
   derbImg.src = "./images/theDerb.png";
   const obstaclesImg = new Image();
@@ -183,7 +183,8 @@
           obstacles[i].update();
           
           if (collisionDetection(derb, obstacles[i]) === true) {
-            cancelAnimationFrame(animationId);
+            livesScore -= 1;                                  //// ????????????????
+            //cancelAnimationFrame(animationId);
         return;
           }
         }
@@ -204,21 +205,40 @@
           derb.y + derb.height > obstacle.y &&
           derb.y < obstacle.y + obstacle.height) {
           return true;
+                                   //reduzir o número de vidas
           }
 
         else {
           return false;
         }
-    }
+      }
         
-
-      // Game over - collision
-
 
       //Restart button
 
 
+
+      // Game over - collision
+
+                        /* function checkGameOver(){
+                          if("vidas = 0"){
+                            //confirmar nº vidas =0;
+                            stopAnimationFrame(updateGame);
+                            document.getElementById("game-area").style.display="none";
+                            // mudar display:"block" para a zona de game over
+                            // mostrar o score final na zona game over
+                            // mostrar restart button operacional 
+                          }
+                        } */
+
       //Lives
+
+        function lives(){
+          let livesScore= 3;
+          ctx.font = "20px Lato"
+          ctx.fillStyle = 'black';
+          ctx.fillText(`Lives: ${livesScore}`, 600, 60);
+          }
 
 
       //Score
@@ -228,3 +248,8 @@
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 600, 30);
         }
+
+
+        // Salvar Score para display no gameOver!
+
+        //Definir quando termina o jogo --- score = x ????
