@@ -22,15 +22,6 @@
 
 /* STEPS:
 
-  1. startGame function
-    1.1 Load game screen and player function (not nested)
-
-  2.Move the playergit pull
-   2.1 Define the player to the limits of the canvas
-   2.2 Keyboard controls
-
-  3. Define obstacles and from where they appear
-    3.1 Collision detection
     
   4. Function updateGame
     4.1 Player position
@@ -49,14 +40,14 @@
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
   const backgroundImg = new Image;
-  backgroundImg.src = "/Derb-the-bird/Images/background.png";
+  backgroundImg.src = "/images/background.png";
   const derbImg = new Image();
-  derbImg.src = "./images/Derb-bird.png";
+  derbImg.src = "./images/theDerb.png";
+  const obstaclesImg = new Image();
+  obstaclesImg.src = "./images/Tuna.png";
   let obstacles = [];
   let frames = 0;
   
- 
-
    
   const backgroundImage = {
 
@@ -105,21 +96,20 @@
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
     generateObstacles();
+    collisionDetection(derb, obstacles);
     score();
-    
-    
 
     requestAnimationFrame(updateGame);
   };
 
 
       class Player {
-      constructor() {
+       constructor() {
         this.x = 50;   // define initial position for Derb x
         this.y = 50;   // define initial position for Derb y
         this.img = derbImg;
         this.width = 150     // 150 size of derb
-        this.height = 150    // 150 size of derb
+        this.height = 120    // 150 size of derb
       }
   
           draw() {
@@ -156,15 +146,14 @@
           }
       }
 
-    let derb= new Player();
-
+    let derb = new Player();
 
 
 
       class Obstacles {
 
         constructor(){
-          this.img = derbImg;
+          this.img = obstaclesImg;
           this.x = 700;   // objects always come from the right
           this.y = Math.random() * (700 - 50) + 50;   // objects can come from any height, 700 is the max height! 70 is min
           this.speed = 2;
@@ -192,24 +181,39 @@
         for(i = 0; i < obstacles.length; i++) {
           obstacles[i].x += -1;
           obstacles[i].update();
+          
+          if (collisionDetection(derb, obstacles[i]) === true) {
+            cancelAnimationFrame(animationId);
+        return;
+          }
         }
 
         frames+=1;
         if(frames%100 === 0){
           obstacles.push(new Obstacles);
         };    
- 
       }
 
 
 
+      // Detect Collision
+      function collisionDetection (derb, obstacle) {
 
+        if (derb.x < obstacle.x + obstacle.width &&
+          derb.x + derb.width > obstacle.x &&
+          derb.y + derb.height > obstacle.y &&
+          derb.y < obstacle.y + obstacle.height) {
+          return true;
+          }
+
+        else {
+          return false;
+        }
+    }
+        
 
       // Game over - collision
 
-
-      // Detect Collision
-         
 
       //Restart button
 
@@ -218,12 +222,9 @@
 
 
       //Score
-
-
         function score(){
           let points = Math.floor(frames / 60);
           ctx.font = "20px Lato"
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 600, 30);
         }
-        
