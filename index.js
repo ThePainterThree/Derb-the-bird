@@ -48,7 +48,6 @@
   let obstacles = [];
   let frames = 0;
   let derbLives= 3;
-  let invincible = false;
   let obstaclesImages = ["./Images/panties.png", "./Images/flipFlop.png", "./Images/Tuna.png"]
   
    
