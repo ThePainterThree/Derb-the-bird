@@ -19,7 +19,7 @@
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
   const backgroundImg = new Image;
-  backgroundImg.src = "./Images/background.png";
+  backgroundImg.src = "./Images/city-img.png";
   const derbImg = new Image();
   derbImg.src = "./images/theDerb.png";
   const obstaclesImg = new Image();
@@ -270,6 +270,3 @@ let requestId
           derbLives = 3;
           frames = 0;
         }
-
-
-      
