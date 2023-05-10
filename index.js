@@ -42,7 +42,10 @@
   let obstacles = [];
   let frames = 0;
   let derbLives= 3;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6366c6168d1d30028034dbfe40e36afd2bcd6166
   let obstaclesImages = ["./Images/panties.png", "./Images/flipFlop.png", "./Images/Tuna.png"]
   
    
@@ -284,7 +287,6 @@ let requestId
           obstacles = [];
           derbLives = 3;
           frames = 0;
-        
         }
 
         
