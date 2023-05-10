@@ -20,15 +20,9 @@
   // window.onload: add the first screen with the start game button and instructions, after the window loads totally
   
 
-/* STEPS:
+/* STEPS
 
-    
-  4. Function updateGame
-    4.1 Player position
-    4.2 Obstacles position
-    4.3 Track the score (and win ?)
-
-  5. Function gameOver or gameWon
+  Title: "A Derb`s life" ?
   
   6.Function reStart
     6.1 Button Restart - eventListener
@@ -48,7 +42,7 @@
   let obstacles = [];
   let frames = 0;
   let derbLives= 3;
-  let invincible = false;
+
   let obstaclesImages = ["./Images/panties.png", "./Images/flipFlop.png", "./Images/Tuna.png"]
   
    
@@ -268,16 +262,26 @@ let requestId
 
 
         //Restart button
-
-        document.getElementById('restartButton').onclick = () => {
+        document.getElementById("restartButton").onclick = () => {
           restartGame();
         };
 
         function restartGame(){
           document.getElementById("game-over").style.display = "none";
           document.getElementById("game-area").style.display = "block";
+          resetGame();
           startGame();
         }
 
 
-        // Salvar Score para display no gameOver!    ---- > talvez só faça sentido se o jogo tivesse níveis
+        function resetGame() { 
+    
+          derbImg.x = 50;
+          derbImg.y = 50;
+          obstacles = [];
+          derbLives = 3;
+          frames = 0;
+
+        }
+
+
