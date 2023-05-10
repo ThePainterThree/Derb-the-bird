@@ -76,7 +76,7 @@
     };
 
     function startGame() {
-      // Set the canvas dimensions to match the viewport or is not necessary?
+      
       document.getElementById("game-instructions").style.display = "none";
       document.getElementsByClassName("game-intro")[0].style.display = "none";
       document.getElementById("game-area").style.display="block";
@@ -108,8 +108,8 @@ let requestId
 
       class Player {
        constructor() {
-        this.x = 50;   // define initial position for Derb x
-        this.y = 50;   // define initial position for Derb y
+        this.x = 150;   // define initial position for Derb x
+        this.y = 150;   // define initial position for Derb y
         this.img = derbImg;
         this.width = 150     // 150 size of derb
         this.height = 120    // 150 size of derb
@@ -214,7 +214,7 @@ let requestId
           derb.x + derb.width > obstacle.x &&
           derb.y + derb.height > obstacle.y &&
           derb.y < obstacle.y + obstacle.height) {
-          console.log("collision detected") 
+          
           return true;
           }
 
@@ -271,17 +271,20 @@ let requestId
           document.getElementById("game-area").style.display = "block";
           resetGame();
           startGame();
+          
         }
 
 
         function resetGame() { 
-    
-          derbImg.x = 50;
-          derbImg.y = 50;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          backgroundImage.update();
+          derb.x = 150;
+          derb.y = 150;
+          derb.update()
           obstacles = [];
           derbLives = 3;
           frames = 0;
-
+        
         }
 
-
+        
