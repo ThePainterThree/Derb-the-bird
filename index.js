@@ -15,22 +15,7 @@
 
  */
 
-  //const canvas = document.getElementById('canvas');
-  //const ctx = canvas.getContext('2d');
-  // window.onload: add the first screen with the start game button and instructions, after the window loads totally
-  
 
-/* STEPS
-
-  Title: "A Derb`s life" ?
-  
-  6.Function reStart
-    6.1 Button Restart - eventListener
-    6.2 Start new game 
-
-  7.Finishing up (sounds? original drawings?)
-
- */
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
   const backgroundImg = new Image;
@@ -42,10 +27,6 @@
   let obstacles = [];
   let frames = 0;
   let derbLives= 3;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6366c6168d1d30028034dbfe40e36afd2bcd6166
   let obstaclesImages = ["./Images/panties.png", "./Images/flipFlop.png", "./Images/Tuna.png"]
   
    
@@ -91,7 +72,7 @@
 let requestId
 
   function updateGame() {
-    // add reset function here
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     backgroundImage.update(); //includes move and draw method for the background
     derb.update(); // includes move and draw method for Derb
@@ -105,26 +86,27 @@ let requestId
 
     if (checkGameOver()){
       cancelAnimationFrame(requestId);
+
     }
   };
 
 
-      class Player {
-       constructor() {
-        this.x = 150;   // define initial position for Derb x
-        this.y = 150;   // define initial position for Derb y
-        this.img = derbImg;
-        this.width = 150     // 150 size of derb
-        this.height = 120    // 150 size of derb
+    class Player {
+      constructor() {
+      this.x = 150;   // define initial position for Derb x
+      this.y = 150;   // define initial position for Derb y
+      this.img = derbImg;
+      this.width = 150     // 150 size of derb
+      this.height = 120    // 150 size of derb
       }
   
-          draw() {
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height); //Define the size of derb
-          }
+        draw() {
+          ctx.drawImage(this.img, this.x, this.y, this.width, this.height); //Define the size of derb
+        }
 
-          move(){
-            document.onkeydown = event => {
-              const key = event.keyCode;
+        move(){
+          document.onkeydown = event => {
+          const key = event.keyCode;
               switch (key) {
                 case 38: // up
                   if(this.y >=0) this.y -=30;
@@ -156,20 +138,20 @@ let requestId
 
 
 
-      class Obstacles {
+    class Obstacles {
 
-        constructor(){
-          this.img = obstaclesImg;
-          this.x = 700;   // objects always come from the right
-          this.y = Math.random() * (700 - 50) + 50;   // objects can come from any height, 700 is the max height! 70 is min
-          this.speed = 2;
-          this.width = 150; // size of obstacle
-          this.height = 150; //size of obstacles
-        }
+      constructor(){
+        this.img = obstaclesImg;
+        this.x = 700;   // objects always come from the right
+        this.y = Math.random() * (700 - 50) + 50;   // objects can come from any height, 700 is the max height! 70 is min
+        this.speed = 2;
+        this.width = 150; // size of obstacle
+        this.height = 150; //size of obstacles
+      }
 
-        draw(){
-          ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        }
+      draw(){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+      }
 
         move(){
           this.x -=this.speed;
@@ -181,6 +163,7 @@ let requestId
         }
       }
       
+
       
       function generateObstacles(){
 
@@ -201,7 +184,6 @@ let requestId
           return;
         }
       
-
         frames+=1;
         if(frames%100 === 0){
           obstacles.push(new Obstacles);
@@ -211,6 +193,7 @@ let requestId
 
 
       // Detect Collision
+
       function collisionDetection (derb, obstacle) {
 
         if (derb.x < obstacle.x + obstacle.width &&
@@ -238,9 +221,6 @@ let requestId
       }
 
 
-      //Restart button
-
-
       //Lives
 
         function playerLives(){
@@ -251,6 +231,7 @@ let requestId
 
 
       //Score and // Win GAME !
+
         function score(){
           let points = Math.floor(frames / 60);
           ctx.font = "20px Lato"
@@ -265,16 +246,17 @@ let requestId
 
 
         //Restart button
+
         document.getElementById("restartButton").onclick = () => {
           restartGame();
         };
+
 
         function restartGame(){
           document.getElementById("game-over").style.display = "none";
           document.getElementById("game-area").style.display = "block";
           resetGame();
-          startGame();
-          
+          updateGame();
         }
 
 
@@ -289,4 +271,5 @@ let requestId
           frames = 0;
         }
 
-        
+
+      
