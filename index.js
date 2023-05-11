@@ -21,7 +21,7 @@
   const CANVAS_WIDTH = canvas.width = 1200;
   const CANVAS_HEIGHT = canvas.height = 684;
   const backgroundImg = new Image;
-  backgroundImg.src = "./Images/city-img.png";
+  backgroundImg.src = "./Images/Untitled_Artwork 2.png";
   const derbImg = new Image();
   derbImg.src = "./Images/Derb-1.png";
   const obstaclesImg = new Image();
@@ -49,7 +49,7 @@
 
     img: backgroundImg,
     x: 0,
-    speed: -1.5,
+    speed: -3,
 
     move: function() {
       this.x += this.speed;
@@ -57,7 +57,7 @@
     },
 
     draw: function() {
-      ctx.drawImage(this.img, this.x, 0, 1500, 784);    
+      ctx.drawImage(this.img, this.x, 0, 3000, 784);    
       ctx.drawImage(this.img, this.x + this.img.width, 0, 1500, 784);                    
     },
 
@@ -180,82 +180,7 @@ let requestId
     tuna.src = "./Images/flyingTuna.png"; */
 
 
-    class Obstacles {
-
-      constructor(){
-        this.img = obstaclesImg;
-        /* this.img1 = chinelo;
-        this.img2 = tuna; */
-        this.x = canvas.width;   // objects always come from the right
-        this.y = Math.random() * (canvas.height + 10) + 10;   // objects can come from any height, canvas.height is the max! 10 is min
-        this.speed = 5;
-        this.width = 50; // size of obstacle
-        this.height = 50; //size of obstacles
-      }
-
-      draw(){
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-      }
-
-        move(){
-          this.x -=this.speed;
-        }
-
-        update() {
-          this.draw();
-          this.move();
-        }
-      }
-      
-
-      
-      function generateObstacles(){
-
-        for(i = 0; i < obstacles.length; i++) {
-          obstacles[i].x += -1;
-          obstacles[i].update();
-        }
-
-          let collision = obstacles.some(function(obstacle, index) {
-            
-            return collisionDetection(derb, obstacle) && obstacles.splice(index, 1);
-            
-          }); 
-
-          if (collision) {
-          hit.play()
-          derbLives -= 1;
-                                      
-         
-          return;
-        }
-      
-        frames+=1;
-        if(frames%80 === 0){
-          obstacles.push(new Obstacles);
-        };    
-      }
-
-
-
-      // Detect Collision
-
-      function collisionDetection (derb, obstacle) {
-
-        if (derb.x < obstacle.x + obstacle.width &&
-          derb.x + derb.width > obstacle.x &&
-          derb.y + derb.height > obstacle.y &&
-          derb.y < obstacle.y + obstacle.height) {
-          
-          return true;
-          }
-
-        else {
-          return false;
-        }
-      }
-      
-
+     
       // Game over
 
       function checkGameOver(){
@@ -289,7 +214,7 @@ let requestId
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 1051, 70);
 
-          if (points>10){
+          if (points>120){
             document.getElementById("game-area").style.display = "none";
             document.getElementById("game-over").style.display = "none";
             document.getElementById("winner").style.display = "block";
