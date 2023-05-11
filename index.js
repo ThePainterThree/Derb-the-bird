@@ -18,10 +18,12 @@
 
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
+  const CANVAS_WIDTH = canvas.width = 1200;
+  const CANVAS_HEIGHT = canvas.height = 684;
   const backgroundImg = new Image;
   backgroundImg.src = "./Images/city-img.png";
   const derbImg = new Image();
-  derbImg.src = "./images/Derb-3.png";
+  derbImg.src = "./images/Page-Animation.png";
   const obstaclesImg = new Image();
   obstaclesImg.src = "./images/Tuna.png";
   let obstacles = [];
@@ -43,8 +45,8 @@
 
     draw: function() {
       ctx.drawImage(this.img, this.x, 0, 3000, 784);    
-      ctx.drawImage(this.img, this.x - this.img.width, 0, 3000, 784);                    
-      ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
+      //ctx.drawImage(this.img, this.x - this.img.width, 0, 3000, 784);                    
+      //ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
     },
 
     update(){
@@ -86,22 +88,27 @@ let requestId
 
     if (checkGameOver()){
       cancelAnimationFrame(requestId);
-
+    }
+    if(score()){
+      cancelAnimationFrame(requestId);
     }
   };
 
 
     class Player {
       constructor() {
-      this.x = 150;   // define initial position for Derb x
-      this.y = 150;   // define initial position for Derb y
+      this.x = 40;   // define initial position for Derb x
+      this.y = 270;   // define initial position for Derb y
       this.img = derbImg;
       this.width = 150     // 150 size of derb
       this.height = 100    // 150 size of derb
       }
   
         draw() {
-          ctx.drawImage(this.img, this.x, this.y, this.width, this.height); //Define the size of derb
+          // ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
+          ctx.drawImage(this.img, 0, 0, 188, 118, this.x, this.y, this.width, this.height);
+          ctx.drawImage(this.img, 250, 0, 188, 118, this.x, this.y, this.width, this.height);
+          
         }
 
         move(){
@@ -109,20 +116,20 @@ let requestId
           const key = event.keyCode;
               switch (key) {
                 case 38: // up
-                  if(this.y >=0) this.y -=30;
+                  if(this.y > 10) 
+                  this.y -=30;
                   break;
                 case 40: // down
+                  if (this.y < 540) 
                   this.y +=30;
-                  if (this.y >= canvas.height) {this.y = canvas.height}; 
-                  //canvas.height/width doesn't work here. Has to be the px limit of the canvas (to be defined on html)
                   break;
                 case 37: // left
-                  if (this.x >=0) this.x -=30;
+                  if (this.x >10) 
+                  this.x -=30;
                   break;
                 case 39: // right
-                  if (this.x < canvas.width) this.x +=30;
-                  //canvas.height/width doesn't work here. Has to be the px limit of the canvas (to be defined on html)
-                  else this.x=0;
+                  if (this.x < 1030) 
+                  this.x +=30;
                   break;
               }
             }
@@ -238,7 +245,7 @@ let requestId
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 600, 30);
 
-          if (points>20){
+          if (points>10){
             document.getElementById("game-area").style.display = "none";
             document.getElementById("winner").style.display = "block";
           }
