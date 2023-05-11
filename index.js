@@ -1,19 +1,3 @@
-// Average browser window size = 1366 x 784
-// General guideline: canvas size of 800x600 pixels for simple browser games
-
-/* STEPS:
-
-  1.Create the Canvas and draw on it (background, derb, obstacles)
-  2.Move the player
-  3.Define the player to the limits of the canvas
-  4.Keyboard controls
-  5.Game over
-  6.Collision detection
-  7.Track the score and win
-  8.Restart
-  9.Finishing up
-
- */
 
 
   const canvas = document.getElementById("game-area");
@@ -22,8 +6,15 @@
   const CANVAS_HEIGHT = canvas.height = 684;
   const backgroundImg = new Image;
   backgroundImg.src = "./Images/Untitled_Artwork 2.png";
+  backgroundImg.alt= "image by Werayuth Tessrimuang"
   const derbImg = new Image();
   derbImg.src = "./Images/Derb-1.png";
+  const derbPosition2 = new Image();
+  derbPosition2.src = "./Images/Derb-2.png";
+  const derbPosition3 = new Image();
+  derbPosition3.src = "./Images/Derb-3.png";
+  const derbPosition4 = new Image();
+  derbPosition4.src = "./Images/Derb-4.png";
   const obstaclesImg = new Image();
   obstaclesImg.src = "./Images/baseballBall.png";
   let obstacles = [];
@@ -40,10 +31,16 @@
   let win = new Audio ("./Images/1819_applause-02.mp3");
   win.volume = 0.3;
 
-  let obstaclesImages = ["./Images/baseballBall.png", "./Images/chinelo.png", "./Images/flyingTuna.png", "./Images/cuecas.png"]
-  let randomObjects = obstaclesImages[Math.floor(Math.random()*obstaclesImages.lenght)];
+  /* const chinelo = new Image();
+    chinelo.src = "./Images/chinelo.png";
+    const tuna = new Image();
+    tuna.src = "./Images/flyingTuna.png"; */
 
-  
+  /* let obstaclesImages = ["./Images/baseballBall.png", "./Images/chinelo.png", "./Images/flyingTuna.png", "./Images/cuecas.png"]
+  let randomObjects = obstaclesImages[Math.floor(Math.random()*obstaclesImages.lenght)];
+ */
+
+  let requestId
    
   const backgroundImage = {
 
@@ -57,8 +54,8 @@
     },
 
     draw: function() {
-      ctx.drawImage(this.img, this.x, 0, 3000, 784);    
-      ctx.drawImage(this.img, this.x + this.img.width, 0, 1500, 784);                    
+      ctx.drawImage(this.img, this.x, 0, this.img.width *3, this.img.height*3.6);    
+      //ctx.drawImage(this.img, this.x + this.img.width, 0, 3000, 784);                    
     },
 
     update(){
@@ -83,8 +80,6 @@
       
     }
   };
-
-let requestId
 
   function updateGame() {
     
@@ -115,12 +110,6 @@ let requestId
     }
   };
 
-      const derbPosition2 = new Image();
-      derbPosition2.src = "./Images/Derb-2.png";
-      const derbPosition3 = new Image();
-      derbPosition3.src = "./Images/Derb-3.png";
-      const derbPosition4 = new Image();
-      derbPosition4.src = "./Images/Derb-4.png";
 
     class Player {
       constructor() {
@@ -147,7 +136,7 @@ let requestId
                   this.img = derbPosition2;
                   break;
                 case 40: // down
-                  if (this.y < 540) 
+                  if (this.y < 550) 
                   this.y +=30;
                   this.img = derbPosition3;
                   break;
@@ -157,7 +146,7 @@ let requestId
                   this.img = derbImg;
                   break;
                 case 39: // right
-                  if (this.x < 1030) 
+                  if (this.x < 1032) 
                   this.x +=30;
                   this.img = derbPosition4;
                   break;
@@ -174,13 +163,80 @@ let requestId
     let derb = new Player();
 
 
-    /* const chinelo = new Image();
-    chinelo.src = "./Images/chinelo.png";
-    const tuna = new Image();
-    tuna.src = "./Images/flyingTuna.png"; */
+    class Obstacles {
+
+      constructor(){
+        this.img = obstaclesImg;
+        this.x = canvas.width;   // objects always come from the right
+        this.y = Math.random() * (canvas.height + 10) + 10;   // objects can come from any height, canvas.height is the max! 10 is min
+        this.speed = 5;
+        this.width = 50; // size of obstacle
+        this.height = 50; //size of obstacles
+      }
+
+      draw(){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+      }
+
+        move(){
+          this.x -=this.speed;
+        }
+
+        update() {
+          this.draw();
+          this.move();
+        }
+      }
+      
+
+      
+      function generateObstacles(){
+
+        for(i = 0; i < obstacles.length; i++) {
+          obstacles[i].x += -1;
+          obstacles[i].update();
+        }
+
+          let collision = obstacles.some(function(obstacle, index) {
+            
+            return collisionDetection(derb, obstacle) && obstacles.splice(index, 1);
+            
+          }); 
+
+          if (collision) {
+          hit.play()
+          derbLives -= 1;
+                                      
+         
+          return;
+        }
+      
+        frames+=1;
+        if(frames%80 === 0){
+          obstacles.push(new Obstacles);
+        };    
+      }
 
 
-     
+
+      // Detect Collision
+
+      function collisionDetection (derb, obstacle) {
+
+        if (derb.x < obstacle.x + obstacle.width &&
+          derb.x + derb.width > obstacle.x &&
+          derb.y + derb.height > obstacle.y &&
+          derb.y < obstacle.y + obstacle.height) {
+          
+          return true;
+          }
+
+        else {
+          return false;
+        }
+      }
+      
+
       // Game over
 
       function checkGameOver(){
@@ -203,7 +259,7 @@ let requestId
           ctx.font = "30px Lato"
           ctx.fillStyle = 'black';
           ctx.fillText(`Lives: ${derbLives}`, 1050, 40);
-          }
+        }
 
 
       //Score and // Win GAME !
