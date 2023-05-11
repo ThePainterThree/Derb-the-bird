@@ -47,6 +47,7 @@ Technologies Used
     JS Canvas
     JS Classes
     Local Storage
+    Sprite Animation (animating derb)
     JS Audio() and JS Image() ????????????
 
 States
