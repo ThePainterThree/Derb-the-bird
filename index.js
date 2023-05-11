@@ -23,20 +23,33 @@
   const backgroundImg = new Image;
   backgroundImg.src = "./Images/city-img.png";
   const derbImg = new Image();
-  derbImg.src = "./images/Page-Animation.png";
+  derbImg.src = "./Images/Derb-1.png";
   const obstaclesImg = new Image();
-  obstaclesImg.src = "./images/Tuna.png";
+  obstaclesImg.src = "./Images/baseballBall.png";
   let obstacles = [];
   let frames = 0;
   let derbLives= 3;
-  let obstaclesImages = ["./Images/panties.png", "./Images/flipFlop.png", "./Images/Tuna.png"]
+
+
+  let music = new Audio("./Images/POL-bits-and-beats-short 2.wav");
+  music.volume =0.1;
+  let hit = new Audio ("./Images/ES_Slip Crash - SFX Producer.mp3")
+  hit.volume = 0.2;
+  let loser = new Audio ("./Images/ES_Laugh - SFX Producer.mp3");
+  loser.volume = 0.3;
+  let win = new Audio ("./Images/1819_applause-02.mp3");
+  win.volume = 0.3;
+
+  let obstaclesImages = ["./Images/baseballBall.png", "./Images/chinelo.png", "./Images/flyingTuna.png", "./Images/cuecas.png"]
+  let randomObjects = obstaclesImages[Math.floor(Math.random()*obstaclesImages.lenght)];
+
   
    
   const backgroundImage = {
 
     img: backgroundImg,
     x: 0,
-    speed: -3,
+    speed: -1.5,
 
     move: function() {
       this.x += this.speed;
@@ -44,9 +57,8 @@
     },
 
     draw: function() {
-      ctx.drawImage(this.img, this.x, 0, 3000, 784);    
-      //ctx.drawImage(this.img, this.x - this.img.width, 0, 3000, 784);                    
-      //ctx.drawImage(this.img, this.x - this.img.width*2, 0, 3000, 784);
+      ctx.drawImage(this.img, this.x, 0, 1500, 784);    
+      ctx.drawImage(this.img, this.x + this.img.width, 0, 1500, 784);                    
     },
 
     update(){
@@ -67,6 +79,7 @@
       document.getElementsByClassName("game-intro")[0].style.display = "none";
       document.getElementById("game-area").style.display="block";
       updateGame();
+      music.play();
       
     }
   };
@@ -88,27 +101,40 @@ let requestId
 
     if (checkGameOver()){
       cancelAnimationFrame(requestId);
+            hit.pause();
+            loser.play();
+            music.pause();
+            win.pause();
     }
     if(score()){
       cancelAnimationFrame(requestId);
+            hit.pause();
+            loser.pause();
+            music.pause();
+            win.play();
     }
   };
 
+      const derbPosition2 = new Image();
+      derbPosition2.src = "./Images/Derb-2.png";
+      const derbPosition3 = new Image();
+      derbPosition3.src = "./Images/Derb-3.png";
+      const derbPosition4 = new Image();
+      derbPosition4.src = "./Images/Derb-4.png";
 
     class Player {
       constructor() {
       this.x = 40;   // define initial position for Derb x
       this.y = 270;   // define initial position for Derb y
       this.img = derbImg;
-      this.width = 150     // 150 size of derb
-      this.height = 100    // 150 size of derb
+      this.width = 220     // 150 size of derb
+      this.height = 160    // 150 size of derb
+      
       }
   
         draw() {
-          // ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
-          ctx.drawImage(this.img, 0, 0, 188, 118, this.x, this.y, this.width, this.height);
-          ctx.drawImage(this.img, 250, 0, 188, 118, this.x, this.y, this.width, this.height);
           
+          ctx.drawImage(this.img, 0, 0, 960, 520, this.x, this.y, this.width, this.height);
         }
 
         move(){
@@ -118,18 +144,22 @@ let requestId
                 case 38: // up
                   if(this.y > 10) 
                   this.y -=30;
+                  this.img = derbPosition2;
                   break;
                 case 40: // down
                   if (this.y < 540) 
                   this.y +=30;
+                  this.img = derbPosition3;
                   break;
                 case 37: // left
                   if (this.x >10) 
                   this.x -=30;
+                  this.img = derbImg;
                   break;
                 case 39: // right
                   if (this.x < 1030) 
                   this.x +=30;
+                  this.img = derbPosition4;
                   break;
               }
             }
@@ -144,16 +174,23 @@ let requestId
     let derb = new Player();
 
 
+    /* const chinelo = new Image();
+    chinelo.src = "./Images/chinelo.png";
+    const tuna = new Image();
+    tuna.src = "./Images/flyingTuna.png"; */
+
 
     class Obstacles {
 
       constructor(){
         this.img = obstaclesImg;
-        this.x = 700;   // objects always come from the right
-        this.y = Math.random() * (700 - 50) + 50;   // objects can come from any height, 700 is the max height! 70 is min
-        this.speed = 2;
-        this.width = 150; // size of obstacle
-        this.height = 150; //size of obstacles
+        /* this.img1 = chinelo;
+        this.img2 = tuna; */
+        this.x = canvas.width;   // objects always come from the right
+        this.y = Math.random() * (canvas.height + 10) + 10;   // objects can come from any height, canvas.height is the max! 10 is min
+        this.speed = 5;
+        this.width = 50; // size of obstacle
+        this.height = 50; //size of obstacles
       }
 
       draw(){
@@ -186,13 +223,15 @@ let requestId
           }); 
 
           if (collision) {
-          derbLives -= 1;                              
+          hit.play()
+          derbLives -= 1;
+                                      
          
           return;
         }
       
         frames+=1;
-        if(frames%100 === 0){
+        if(frames%80 === 0){
           obstacles.push(new Obstacles);
         };    
       }
@@ -222,7 +261,12 @@ let requestId
       function checkGameOver(){
         if(derbLives === 0) {
           document.getElementById("game-area").style.display = "none";
+          document.getElementById("winner").style.display = "none";
           document.getElementById("game-over").style.display = "block";
+          music.pause();
+          hit.pause();
+          win.pause();
+          loser.play();
           return true;
         }
       }
@@ -231,9 +275,9 @@ let requestId
       //Lives
 
         function playerLives(){
-          ctx.font = "20px Lato"
+          ctx.font = "30px Lato"
           ctx.fillStyle = 'black';
-          ctx.fillText(`Lives: ${derbLives}`, 600, 60);
+          ctx.fillText(`Lives: ${derbLives}`, 1050, 40);
           }
 
 
@@ -243,11 +287,16 @@ let requestId
           let points = Math.floor(frames / 60);
           ctx.font = "20px Lato"
           ctx.fillStyle = 'black';
-          ctx.fillText(`Score: ${points}`, 600, 30);
+          ctx.fillText(`Score: ${points}`, 1051, 70);
 
           if (points>10){
             document.getElementById("game-area").style.display = "none";
+            document.getElementById("game-over").style.display = "none";
             document.getElementById("winner").style.display = "block";
+            hit.pause();
+            loser.pause();
+            music.pause();
+            win.play();
           }
         }
 
@@ -258,12 +307,18 @@ let requestId
           restartGame();
         };
 
+        document.getElementById("restartButton2").onclick = () => {
+          restartGame();
+        };
+
 
         function restartGame(){
           document.getElementById("game-over").style.display = "none";
+          document.getElementById("winner").style.display = "none";
           document.getElementById("game-area").style.display = "block";
           resetGame();
           updateGame();
+          music.play();
         }
 
 
