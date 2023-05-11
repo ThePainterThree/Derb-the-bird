@@ -1,74 +1,88 @@
 # Derb-the-bird
 
-   Derb, The Bird 
+## [Play the Game!](//insert link here//)
 
-    This game was built for the Project 1 - Ironhack Web Development Course
-    by Patricia and Viviane
+![Game Logo](./Images/Derb-1.png)
 
-    Gameplay:
+# Description
 
-        You will be playing with Derb, that has a journey ahead of him!
+    Derb is a bird, that knows flying over the city skies is not easy. To survive when flying, he has to dodge all sort of objects that are thrown no him. The objective is to help him get to the finish line (maximum score points). You lose when Derb hits the obstacles 3 times (three lives).
 
-        Flying is a wonderfull experience, but ... sometimes objects appear and to stay alive
-        he has to dodge them!
-
-        Move in any direction to stay alive using the arrows on your keybord.
-
-        Obtain the maximum score to get Derb to the finish line.
-
-        You lose when Derb hits any obstacle 3 times.
-
-        Restart if you dare!
+    This game was built for the Project 1 - Ironhack Web Development Course, by Patricia Moutinho (Programming and Design Main Character) and Viviane Ferreira (Programming).
 
 
+# Main Functionalities
+
+    - Single player game where the player has 3 lives.
+    - Player moves to left, right, up and down (using keybord arrows).
+    - Avoid obstacles to stay alive.
+    - Objective is to get to the finish line (maximum amount of time the game lastes)
+    - The game ends if Derb hits objects 3 times (lose), or you get to the finish line (win).
 
 
+# Backlog Functionalities
+
+    - Creating the character Derb.
+    - Improving UI.
+    - Making the game.
+
+# Technologies Used
+
+    - HTML
+    - CSS
+    - JavaScript
+    - DOM Manipulation
+    - JS Canvas
+    - JS Classes
+    - JS Functions
+    - JS Audio()
+    - JS Image()
+    - ProCreate
+    - Local Storage
+
+# States
+
+    - Start Screen
+    - Game Screen
+    - Game Over Screen
+    - Win Screen
 
 
-Main Functionalities
+# Project Structure
 
-    Single player game where the player has 3 lives.
-    Player moves to left, right, up and down (using keybord arrows).
-    Avoid obstacles to stay alive.
-    Objective is to get to the finish line (x amount of time the game lastes)
-    The game ends if Derb hits objects 3 times, or you get to the finish line.
+    Images
+    index.html
+    styles.css
+    README.md
 
-Backlog Functionalities
+## index.js
 
-    Adding different types of obstacles.
-    Making the game.
-
-Technologies Used
-
-    HTML
-    CSS
-    JavaScript
-    DOM Manipulation
-    JS Canvas
-    JS Classes
-    Local Storage
-    Sprite Animation (animating derb)
-    JS Audio() and JS Image() ????????????
-
-States
-
-    Start Screen
-    Game Screen
-    Game Over Screen
+    - variables (including images and audio);
+    - backgroundLoop();
+    - window.onload();
+        - functionStartGame();
+    - functionUpdateGame();
+    - classPlayer();
+    - classObstacles();
+    - functiongenerateObstacles();
+    - functioncollisionDetection();
+    - functioncheckGameOver();
+    - functionplayerLives();
+    - functionscore();
+    - functionrestartGame();
+    - function resetGame()
 
 
+# Extra Links
 
-Project Structure
+### Trello [Link] (www.trello.com)
+### Canva [Link] (www.canva.com)
+### Vecteezy [Link] (www.vecteezy.com) - artist: Werayuth Tessrimuang
+### EpidemicSound [Link] (www.epidemicsound.com)
+### Zoom [Link] (www.zoom.us) XD
+### Deploy []
+    
+# Game Development Credits
 
-    main.js
-
-    Game.js
-
-    Ship.js
-
-
-Extra Links
-
-    Trello
-    Slides
-    Deploy
+    Viviane Ferreira (Programming)
+    Patricia Moutinho (Programming and Derb character design)
