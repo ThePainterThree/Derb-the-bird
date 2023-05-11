@@ -101,7 +101,7 @@ let requestId
       this.y = 270;   // define initial position for Derb y
       this.img = derbImg;
       this.width = 150     // 150 size of derb
-      this.height = 120    // 150 size of derb
+      this.height = 100    // 150 size of derb
       }
   
         draw() {
