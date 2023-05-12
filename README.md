@@ -80,7 +80,7 @@
 ### Vecteezy [Link] (www.vecteezy.com) - artist: Werayuth Tessrimuang
 ### EpidemicSound [Link] (www.epidemicsound.com)
 ### Zoom [Link] (www.zoom.us) XD
-### Deploy []
+### Deploy [Link] (thepainterthree.github.io/Derb-the-bird)
     
 # Game Development Credits
 
