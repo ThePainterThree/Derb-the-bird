@@ -2,8 +2,8 @@
 
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
-  const CANVAS_WIDTH = canvas.width = 1200;
-  const CANVAS_HEIGHT = canvas.height = 684;
+  const CANVAS_WIDTH = canvas.width = 1000;
+  const CANVAS_HEIGHT = canvas.height = 584;
   const backgroundImg = new Image;
   backgroundImg.src = "./Images/Untitled_Artwork 2.png";
   backgroundImg.alt= "image by Werayuth Tessrimuang"
@@ -22,13 +22,13 @@
   let derbLives= 3;
 
 
-  let music = new Audio("./Images/POL-bits-and-beats-short 2.wav");
-  music.volume =0.1;
-  let hit = new Audio ("./Images/ES_Slip Crash - SFX Producer.mp3")
+  let music = new Audio("./Images/ES_PREL Beat Organ - SFX Producer.mp3");
+  music.volume =0.5;
+  let hit = new Audio ("./Images/ES_Slip Crash - SFX Producer.mp3");
   hit.volume = 0.2;
-  let loser = new Audio ("./Images/ES_Laugh - SFX Producer.mp3");
+  let loser = new Audio ("./Images/ES_Trumpet Sad - SFX Producer.mp3");
   loser.volume = 0.3;
-  let win = new Audio ("./Images/1819_applause-02.mp3");
+  let win = new Audio ("./Images/ES_Hawaiian Conquistador (Sting Version) - Joe E. Lee.mp3");
   win.volume = 0.3;
 
   /* const chinelo = new Image();
@@ -116,8 +116,8 @@
       this.x = 40;   // define initial position for Derb x
       this.y = 270;   // define initial position for Derb y
       this.img = derbImg;
-      this.width = 220     // 150 size of derb
-      this.height = 160    // 150 size of derb
+      this.width = 220     //  size of derb
+      this.height = 160    //  size of derb
       
       }
   
@@ -270,7 +270,7 @@
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 1051, 70);
 
-          if (points>10){
+          if (points>60){
             document.getElementById("game-area").style.display = "none";
             document.getElementById("game-over").style.display = "none";
             document.getElementById("winner").style.display = "block";
