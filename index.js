@@ -23,7 +23,7 @@
 
 
   let music = new Audio("./Images/ES_PREL Beat Organ - SFX Producer.mp3");
-  music.volume =0.1;
+  music.volume =0.5;
   let hit = new Audio ("./Images/ES_Slip Crash - SFX Producer.mp3");
   hit.volume = 0.2;
   let loser = new Audio ("./Images/ES_Trumpet Sad - SFX Producer.mp3");
