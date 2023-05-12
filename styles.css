@@ -129,6 +129,11 @@ margin-left: 25%;
 width: 54%;
 }
 
+#derb-winner{
+  margin-left: 25%;
+  width: 54%;
+}
+
 #winner{
   text-align: center;
   display: none;
@@ -140,6 +145,6 @@ width: 54%;
   text-align: center;
   margin: 0;
   color: black;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
