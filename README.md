@@ -2,7 +2,7 @@
 
 ## [Play the Game!] https://thepainterthree.github.io/Derb-the-bird/
 
-![Game Logo](./Images/Derb-1.png)
+![./Images/Derb-1.png]
 
 # Description
 
@@ -10,9 +10,6 @@
     Along his way, he must dodge from objects thrown in the sky. Stay sharp and be quick with your reactions to avoid getting hit by obstacles! You have 3 lives in total to help Derb complete his journey.
     
     Join us on this Derb-venture!
-    
-    This game was built for the first Project - Ironhack Web Development Course, by Patricia Moutinho (programming and main character design) and Viviane Ferreira (programming).
-
 
 # Main Functionalities
 
@@ -28,7 +25,8 @@
     - Implementation of more obstacles and its rotation;
     - Creating levels within the game;
     - Designing obstacles image from scratch;
-    - Improving UI;
+    - Animate the player (using sprite method)
+
 
 # Technologies Used
 
@@ -64,7 +62,7 @@
     - variables (including images and audio);
     - backgroundLoop();
     - window.onload();
-        - functionStartGame();
+    - functionStartGame();
     - functionUpdateGame();
     - classPlayer();
     - classObstacles();
@@ -74,19 +72,21 @@
     - functionplayerLives();
     - functionscore();
     - functionrestartGame();
-    - function resetGame()
+    - functionresetGame();
 
 
 # Extra Links
 
-### Trello [Link] (www.trello.com)
 ### Canva [Link] (www.canva.com)
-### Vecteezy [Link] (www.vecteezy.com) - artist: Werayuth Tessrimuang
+### Vecteezy [Link] (www.vecteezy.com) - artist: Werayuth Tessrimuang 
 ### EpidemicSound [Link] (www.epidemicsound.com)
-### Zoom [Link] (www.zoom.us) XD
-### Deploy []
+### Deploy [Link] (https://thepainterthree.github.io/Derb-the-bird/)
     
 # Game Development Credits
 
-    Viviane Ferreira (Programming)
-    Patricia Moutinho (Programming and Derb character design)
+This game was built for the first Project - Ironhack Web Development Course, by
+ThePainterThree (programming and main character design) and Vialoha (programming).
+
+Follow us on GitHub:
+- https://github.com/ThePainterThree
+- https://github.com/Vialoha

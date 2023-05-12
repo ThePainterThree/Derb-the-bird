@@ -10,7 +10,7 @@
 
 #title {
   font-family: 'Risque', cursive;
-  font-size: 6rem;
+  font-size: 5rem;
   text-align: left;
   padding-left: 5%;
   padding-bottom: 25%;
@@ -21,7 +21,7 @@
 
 #title-shadow {
   font-family: 'Risque', cursive;
-  font-size: 6rem;
+  font-size: 5rem;
   text-align: left;
   padding-left: 5%;
   padding-bottom: 26%;
@@ -31,9 +31,9 @@
 
 
 #Derb-img-intro {
-  width: 82%;
+  width: 60%;
   padding-left: 0%;
-  padding-top: 2%;
+  
   /* cropping the image of derb will automattically make the intro html better */
 }
 
@@ -119,12 +119,11 @@ h3 {
 
 #game-over{
  
-  display: block; /* mudar depois para "block"", foi só para criar as outras páginas html */
+  display: none; /* mudar depois para "block"", foi só para criar as outras páginas html */
 }
 
 #derb-loser{
- width: 80%;
- padding-right: 30%;
+ width: 60%;
  position: absolute;
 }
 
