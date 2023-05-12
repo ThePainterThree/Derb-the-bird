@@ -2,8 +2,8 @@
 
   const canvas = document.getElementById("game-area");
   const ctx = canvas.getContext("2d");
-  const CANVAS_WIDTH = canvas.width = 1200;
-  const CANVAS_HEIGHT = canvas.height = 684;
+  const CANVAS_WIDTH = canvas.width = 1000;
+  const CANVAS_HEIGHT = canvas.height = 584;
   const backgroundImg = new Image;
   backgroundImg.src = "./Images/Untitled_Artwork 2.png";
   backgroundImg.alt= "image by Werayuth Tessrimuang"
@@ -22,7 +22,7 @@
   let derbLives= 3;
 
 
-  let music = new Audio("./Images/POL-bits-and-beats-short 2.wav");
+  let music = new Audio("./Images/ES_Hawaiian Conquistador (Sting Version) - Joe E. Lee.mp3");
   music.volume =0.1;
   let hit = new Audio ("./Images/ES_Slip Crash - SFX Producer.mp3")
   hit.volume = 0.2;

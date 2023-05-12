@@ -5,49 +5,68 @@
 	justify-content: center;
 	align-items: center;
 	align-content: stretch;
-  align-content:center;
+  align-content:right;
 }
 
 #title {
   font-family: 'Risque', cursive;
-  font-size: 3rem;
-  text-align: center;
-  margin-top: 50px;
+  font-size: 5rem;
+  text-align: left;
+  padding-left: 5%;
+  padding-bottom: 25%;
   color: #16128a;
+  position: absolute;
 }
 
+
+#title-shadow {
+  font-family: 'Risque', cursive;
+  font-size: 5rem;
+  text-align: left;
+  padding-left: 5%;
+  padding-bottom: 26%;
+  color: #FFF8D6;
+  position: absolute;
+}
+
+
 #Derb-img-intro {
-  margin-top: 20px;
-  padding-top: 8%;
-  width: 80%;
+  width: 60%;
+  padding-left: 0%;
+  
   /* cropping the image of derb will automattically make the intro html better */
 }
 
 #start-button{
   font-family: 'Lato', sans-serif;
   color: #f3dbdb;
-  position: end;
-  background-color:#C96346ff;
-  padding: 20px 40px;
-  font-size: 35px;
+  position: absolute;
+  background-color:#3A98B9;
+  padding: 10px 20px;
+  font-size: 30px;
   box-shadow: 20;
-  border-radius: 7px;
-  margin-top: 10%;
-  size: 30px;
+  border-radius: 15px;
+  size: 10px;
+  margin-right: 53%;
+  margin-top: 45%;
 }
 
 #restartButton {
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
   font-family: 'Lato', sans-serif;
-  position: center;
-  font-size: 20px;
-  background-color:#C96346ff;
   color: #f3dbdb;
-  padding: 20px 40px;
-  border: 0;
+  position: absolute;
+  margin-top:33%;
+  background-color:#E86A33;
+  font-size: 30px;
+  padding: 10px 20px;
   box-shadow: 20;
-  border-radius: 5px;
-  margin-left: 50%;
-  display: block;
+  border-radius: 14px;
+  margin-left: 33%;
+  margin-bottom:10%;
+
 }
 
 #restartButton2{
@@ -65,12 +84,13 @@
 }
 
 #game-instructions{
-    width: 250px;
+    width: 300px;
     padding-left: 20px;
-    padding-right: 20px;
     text-align: justify;
     display:block;
     color: #16128a;
+    position: absolute;
+    padding-right: 55%;
     
 }
 
@@ -90,7 +110,7 @@ p {
 
 
 h3 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 #game-area{
@@ -98,27 +118,13 @@ h3 {
 }
 
 #game-over{
-  text-align: center;
-  width: 400px;
-  padding-left: none;
-  border: none;
-  border-color: none;
+ 
   display: none; /* mudar depois para "block"", foi só para criar as outras páginas html */
 }
 
-#title-over{
-  font-family: 'Risque', cursive;
-  font-size: 3rem;
-  text-align: center;
-  margin: 0;
-  color: #16128a;
-  padding-left: 40%;
-  padding-top: 40%
-}
-
 #derb-loser{
-  width: 600px;
-  padding-left: 0;
+ width: 60%;
+ position: absolute;
 }
 
 #winner{
