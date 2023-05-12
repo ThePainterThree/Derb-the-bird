@@ -10,10 +10,10 @@
 
 #title {
   font-family: 'Risque', cursive;
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: left;
-  padding-left: 5%;
-  padding-bottom: 25%;
+  padding-left: 4%;
+  padding-bottom: 17%;
   color: #16128a;
   position: absolute;
 }
@@ -21,10 +21,10 @@
 
 #title-shadow {
   font-family: 'Risque', cursive;
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: left;
-  padding-left: 5%;
-  padding-bottom: 26%;
+  padding-left: 3%;
+  padding-bottom: 18%;
   color: #FFF8D6;
   position: absolute;
 }
@@ -42,28 +42,29 @@
   color: #f3dbdb;
   position: absolute;
   background-color:#3A98B9;
-  padding: 10px 20px;
-  font-size: 30px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-weight: bold;
   box-shadow: 20;
-  border-radius: 15px;
-  size: 10px;
+  border-radius: 10px;
+  size: 5px;
   margin-right: 33%;
-  margin-top: 28%;
+  margin-top: 25%;
 }
 
 #restartButton {
-  position:absolute;
-  display: flex;
+  position: absolute;
+ font-weight: bold;
   font-family: 'Lato', sans-serif;
-  color: #f3dbdb;
-  background-color:#E86A33;
-  font-size: 25px;
-  padding: 10px 25px;
+  color:#0e2d39;
+  background-color: #f3dbdb;
+  font-size: 20px;
+  padding: 5px 15px;
   box-shadow: 20;
-  border-radius: 14px;
-  margin-left: 46%;
-  margin-top:0%;
-
+  border-radius: 10px;
+  margin-left: 44%;
+  margin-top: 20%;
+  size: 5px;
 }
 
 #restartButton2{
@@ -81,15 +82,15 @@
 }
 
 #game-instructions{
-    width: 300px;
-    padding-left: 450px;
-    text-align: justify;
-    display:block;
-    color: #16128a;
-    position: absolute;
-    padding-right: 55%;
-    padding-top:0%
-    
+  
+  width: 190px;
+  padding-left: 450px;
+  text-align: justify;
+  display:block;
+  color: white;
+  position: absolute;
+  padding-right: 68%;
+  padding-bottom: 5%;
 }
 
 body {
@@ -102,13 +103,13 @@ body {
 }
 
 p {
-  color: #16128a;
-  font-size: 1.5em;
+  color: white;
+  font-size: 1rem;
 }
 
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #game-area{
@@ -119,15 +120,13 @@ h3 {
   display: none;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: center;
 	align-items: center;
 	align-content: stretch;
-  align-content:right;
 }
 
 #derb-loser{
- width: 47%;
- padding-left: 550px;
+margin-left: 25%;
+width: 54%;
 }
 
 #winner{
