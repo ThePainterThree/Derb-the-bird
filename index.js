@@ -54,7 +54,7 @@
     },
 
     draw: function() {
-      ctx.drawImage(this.img, this.x, 0, this.img.width *3, this.img.height*3.6);    
+      ctx.drawImage(this.img, this.x, 0, this.img.width *3, this.img.height*2.7);    
       //ctx.drawImage(this.img, this.x + this.img.width, 0, 3000, 784);                    
     },
 
@@ -136,7 +136,7 @@
                   this.img = derbPosition2;
                   break;
                 case 40: // down
-                  if (this.y < 550) 
+                  if (this.y < 450) 
                   this.y +=30;
                   this.img = derbPosition3;
                   break;
@@ -146,7 +146,7 @@
                   this.img = derbImg;
                   break;
                 case 39: // right
-                  if (this.x < 1032) 
+                  if (this.x < 850) 
                   this.x +=30;
                   this.img = derbPosition4;
                   break;
@@ -206,8 +206,7 @@
           if (collision) {
           hit.play()
           derbLives -= 1;
-                                      
-         
+                                
           return;
         }
       
@@ -256,9 +255,9 @@
       //Lives
 
         function playerLives(){
-          ctx.font = "30px Lato"
+          ctx.font = "25px Lato"
           ctx.fillStyle = 'black';
-          ctx.fillText(`Lives: ${derbLives}`, 1050, 40);
+          ctx.fillText(`Lives: ${derbLives}`, 850, 40);
         }
 
 
@@ -268,7 +267,7 @@
           let points = Math.floor(frames / 60);
           ctx.font = "20px Lato"
           ctx.fillStyle = 'black';
-          ctx.fillText(`Score: ${points}`, 1051, 70);
+          ctx.fillText(`Score: ${points}`, 850, 70);
 
           if (points>60){
             document.getElementById("game-area").style.display = "none";

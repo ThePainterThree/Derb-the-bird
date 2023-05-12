@@ -31,7 +31,7 @@
 
 
 #Derb-img-intro {
-  width: 60%;
+  width: 50%;
   padding-left: 0%;
   
   /* cropping the image of derb will automattically make the intro html better */
@@ -47,25 +47,22 @@
   box-shadow: 20;
   border-radius: 15px;
   size: 10px;
-  margin-right: 53%;
-  margin-top: 45%;
+  margin-right: 33%;
+  margin-top: 28%;
 }
 
 #restartButton {
+  position:absolute;
   display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
   font-family: 'Lato', sans-serif;
   color: #f3dbdb;
-  position: absolute;
-  margin-top:33%;
   background-color:#E86A33;
-  font-size: 30px;
-  padding: 10px 20px;
+  font-size: 25px;
+  padding: 10px 25px;
   box-shadow: 20;
   border-radius: 14px;
-  margin-left: 33%;
-  margin-bottom:10%;
+  margin-left: 46%;
+  margin-top:0%;
 
 }
 
@@ -80,17 +77,18 @@
   box-shadow: 20;
   border-radius: 5px;
   margin-left: 50%;
-  display: block;
+  display: flex;
 }
 
 #game-instructions{
     width: 300px;
-    padding-left: 20px;
+    padding-left: 450px;
     text-align: justify;
     display:block;
     color: #16128a;
     position: absolute;
     padding-right: 55%;
+    padding-top:0%
     
 }
 
@@ -118,13 +116,18 @@ h3 {
 }
 
 #game-over{
- 
-  display: none; /* mudar depois para "block"", foi só para criar as outras páginas html */
+  display: none;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+  align-content:right;
 }
 
 #derb-loser{
- width: 60%;
- position: absolute;
+ width: 47%;
+ padding-left: 550px;
 }
 
 #winner{
