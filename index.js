@@ -269,7 +269,7 @@
           ctx.fillStyle = 'black';
           ctx.fillText(`Score: ${points}`, 850, 70);
 
-          if (points>10){
+          if (points>80){
             document.getElementById("game-area").style.display = "none";
             document.getElementById("game-over").style.display = "none";
             document.getElementById("winner").style.display = "block";
